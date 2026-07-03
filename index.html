@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>社區健康體適能 - AI應用推廣實務分享｜鍾孟修 職能治療師</title>
+<style>
+  :root{
+    --ink:#1f2a2e; --paper:#f4efe4; --paper2:#ebe3d2;
+    --terra:#c8633f; --terra-deep:#a84a2a;
+    --teal:#2f7d72; --teal-deep:#1f5a52;
+    --gold:#d9a441; --line:#cdbfa6; --muted:#6c6253;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{min-height:100%}
+  body{
+    background:var(--ink);
+    font-family:"PingFang TC","Microsoft JhengHei","Noto Sans TC",sans-serif;
+    color:var(--ink); line-height:1.7; -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  .stage{position:static;display:block;padding:62px 16px 60px;max-width:1212px;margin:0 auto}
+  .slide{
+    position:relative; width:100%; aspect-ratio:16/9; min-height:540px;
+    background:var(--paper); border-radius:14px; overflow:hidden;
+    box-shadow:0 14px 36px rgba(0,0,0,.32);
+    display:flex; flex-direction:column; margin:0 auto 26px;
+    scroll-margin-top:58px;
+  }
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .pad{padding:clamp(22px,3.6vw,52px);height:100%;display:flex;flex-direction:column;overflow:auto}
+  .vcenter{justify-content:center}
+
+  .tag{position:absolute;left:0;top:0;height:100%;width:9px;background:linear-gradient(var(--terra),var(--teal));z-index:2}
+  .pg{position:absolute;right:20px;bottom:14px;font-size:12px;color:var(--muted);letter-spacing:.12em;font-variant-numeric:tabular-nums}
+
+  .eyebrow{font-size:clamp(11px,1.3vw,14px);letter-spacing:.4em;color:var(--terra-deep);font-weight:700;text-transform:uppercase;margin-bottom:14px}
+  h1{font-size:clamp(26px,4.8vw,60px);line-height:1.12;font-weight:800;letter-spacing:-.01em}
+  h2{font-size:clamp(21px,3.4vw,42px);line-height:1.18;font-weight:800;margin-bottom:6px}
+  h3{font-size:clamp(16px,2vw,25px);font-weight:700}
+  p,li{font-size:clamp(13px,1.55vw,18px);color:#39423f}
+  .lead{font-size:clamp(15px,1.9vw,22px);color:var(--muted)}
+  .sm{font-size:clamp(12px,1.4vw,15px)}
+
+  .num-badge{display:inline-flex;align-items:center;gap:11px;font-size:clamp(12px,1.45vw,16px);font-weight:700;color:var(--teal-deep);letter-spacing:.08em;margin-bottom:12px}
+  .num-badge .dot{width:32px;height:32px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-size:14px}
+  .rule{height:3px;width:66px;background:var(--terra);border-radius:2px;margin:12px 0 18px}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2.2vw,28px)}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.6vw,22px)}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.3vw,16px)}
+
+  .card{background:var(--paper2);border:1px solid var(--line);border-radius:12px;padding:clamp(14px,1.8vw,24px);height:100%}
+  .card.terra{background:#f6e3d8;border-color:#e3b89e}
+  .card.teal{background:#dcebe6;border-color:#a9cfc5}
+  .card.gold{background:#f3e6c4;border-color:#dcc88a}
+  .card h3{margin-bottom:6px}
+  .card .ic{font-size:27px;margin-bottom:8px;display:block}
+
+  .stat{font-size:clamp(30px,5vw,66px);font-weight:800;line-height:1;color:var(--terra-deep)}
+  .stat-l{font-size:clamp(12px,1.4vw,16px);color:var(--muted);margin-top:7px}
+
+  ul.clean{list-style:none}
+  ul.clean li{position:relative;padding-left:26px;margin-bottom:11px}
+  ul.clean li::before{content:"";position:absolute;left:3px;top:10px;width:9px;height:9px;background:var(--terra);border-radius:2px;transform:rotate(45deg)}
+
+  .pill{display:inline-block;background:var(--terra);color:#fff;font-size:clamp(11px,1.35vw,15px);font-weight:700;padding:5px 13px;border-radius:20px;margin-bottom:12px;letter-spacing:.03em}
+  .pill.teal{background:var(--teal)}
+  .pill.gold{background:var(--gold);color:#3a2e10}
+
+  .chip{display:inline-block;background:rgba(31,42,46,.06);border:1px solid var(--line);padding:6px 13px;border-radius:30px;font-size:clamp(11px,1.35vw,15px);color:var(--teal-deep);font-weight:600;margin:3px 4px 3px 0}
+
+  .attr{display:inline-flex;align-items:center;gap:9px;background:rgba(31,42,46,.06);border:1px solid var(--line);padding:8px 16px;border-radius:30px;font-size:clamp(12px,1.4vw,15px);color:var(--teal-deep);font-weight:600;align-self:flex-start}
+  a.lnk{color:var(--terra-deep);font-weight:700;text-decoration:none;border-bottom:2px solid rgba(200,99,63,.35);transition:.15s;word-break:break-all}
+  a.lnk:hover{color:#fff;background:var(--terra);border-radius:4px;padding:1px 4px;border-bottom-color:transparent}
+  .dl{display:inline-flex;align-items:center;gap:6px;background:var(--teal);color:#fff !important;font-weight:700;text-decoration:none;padding:6px 13px;border-radius:20px;font-size:clamp(12px,1.4vw,15px);margin:3px 5px 3px 0;transition:.15s}
+  .dl:hover{background:var(--teal-deep)}
+  .dl.terra{background:var(--terra)} .dl.terra:hover{background:var(--terra-deep)}
+  .dl.gold{background:var(--gold);color:#3a2e10 !important} .dl.gold:hover{filter:brightness(.94)}
+
+  /* 互動問答 */
+  .quiz{display:grid;grid-template-columns:1fr 1fr;gap:14px 20px}
+  .qcard{background:var(--paper2);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .qcard .q{font-weight:800;font-size:clamp(14px,1.6vw,17px);color:var(--teal-deep);margin-bottom:8px;display:flex;gap:8px}
+  .qcard .q .qn{flex:none;width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-size:13px}
+  .opts{display:flex;flex-wrap:wrap;gap:6px}
+  .opt{background:#fff;border:1.5px solid var(--line);border-radius:8px;padding:6px 12px;font-size:clamp(12px,1.45vw,15px);cursor:pointer;font-family:inherit;color:#39423f;transition:.12s}
+  .opt:hover{border-color:var(--teal)}
+  .opt.correct{background:var(--teal);color:#fff;border-color:var(--teal);font-weight:700}
+  .opt.wrong{background:#f0d9d0;border-color:#d99;color:#a84a2a;text-decoration:line-through}
+  .ans{margin-top:8px;font-size:clamp(12px,1.45vw,15px);color:var(--terra-deep);font-weight:600;display:none}
+  .ans.show{display:block;animation:fade .3s ease}
+
+  .browser{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .browser .top{background:#e4dccb;padding:8px 14px;display:flex;align-items:center;gap:7px;border-bottom:1px solid var(--line)}
+  .browser .top .d{width:11px;height:11px;border-radius:50%}
+  .browser .top .url{flex:1;background:#fff;border-radius:20px;padding:5px 14px;font-size:13px;color:var(--muted);margin-left:8px;border:1px solid var(--line);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+  .demo{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;height:100%}
+  .demo .bar{background:var(--teal-deep);color:#fff;padding:8px 15px;font-size:12px;display:flex;gap:6px;align-items:center}
+  .demo .bar .d{width:9px;height:9px;border-radius:50%;background:#ffd9c2;opacity:.8}
+  .demo .body{padding:16px;flex:1}
+
+  .flow{display:flex;flex-wrap:wrap;gap:6px}
+  .flow .step{flex:1;min-width:120px;background:var(--paper2);border:1px solid var(--line);padding:15px;border-radius:10px}
+  .flow .step .n{font-size:12px;font-weight:800;color:var(--terra);letter-spacing:.08em}
+
+  .quote{font-size:clamp(20px,3.2vw,38px);font-weight:800;line-height:1.3}
+  .big-q{font-size:clamp(24px,4.4vw,56px);font-weight:800;line-height:1.2}
+
+  .profile-grid{display:grid;grid-template-columns:0.62fr 1.38fr;gap:26px;align-items:center;height:100%}
+  .profile-photo{border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#dfe3e6;max-height:100%}
+  .profile-photo img{width:100%;height:100%;object-fit:cover;display:block;max-height:78vh}
+  .role-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+
+  .cover{background:radial-gradient(120% 120% at 80% 10%,#2f7d72 0%,#1f5a52 42%,#14403a 100%);color:var(--paper)}
+  .cover h1,.cover h2{color:#fff} .cover .eyebrow{color:var(--gold)} .cover .lead{color:#d7e6e1}
+  .cover .tag{background:linear-gradient(var(--gold),var(--terra))} .cover .attr{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);color:#fff}
+  .cover .chip{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.22);color:#eef6f3}
+
+  .section-cov{background:linear-gradient(135deg,#c8633f,#a84a2a);color:#fff}
+  .section-cov .eyebrow{color:#ffe2cf} .section-cov h1{color:#fff} .section-cov .lead{color:#ffe2cf}
+  .section-cov .tag{background:linear-gradient(#fff,#ffd9c2)}
+
+  .closing{background:radial-gradient(120% 120% at 20% 90%,#2f7d72 0%,#14403a 100%);color:var(--paper)}
+  .closing h1,.closing h2{color:#fff} .closing .lead{color:#d7e6e1}
+  .closing .tag{background:linear-gradient(var(--gold),var(--terra))}
+  .closing .attr{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);color:#fff}
+
+  .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px;flex:1;align-content:center}
+  .contact-card{
+    display:flex;flex-direction:column;text-decoration:none;
+    background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.28);
+    border-radius:16px;padding:28px 24px;transition:.18s;cursor:pointer;
+  }
+  .contact-card:hover{background:rgba(255,255,255,.2);transform:translateY(-4px);border-color:var(--gold)}
+  .contact-card .ci{font-size:46px;margin-bottom:14px}
+  .contact-card .ct{font-size:clamp(20px,2.4vw,28px);font-weight:800;color:#fff;margin-bottom:8px}
+  .contact-card .cd{font-size:clamp(14px,1.6vw,18px);color:#d7e6e1;word-break:break-all;line-height:1.5;flex:1}
+  .contact-card .cgo{margin-top:16px;font-size:clamp(14px,1.6vw,17px);font-weight:700;color:var(--gold);letter-spacing:.04em}
+
+  .nav{position:fixed;top:0;left:0;right:0;height:46px;background:#16201f;display:flex;align-items:center;gap:14px;padding:0 16px;z-index:50;border-bottom:1px solid #2b3a37}
+  .nav .brand{color:#f4efe4;font-weight:700;font-size:14px;white-space:nowrap}
+  .nav .brand span{color:var(--gold)}
+  .nav .spacer{flex:1}
+  .menu-btn{background:#26332f;color:#f4efe4;border:1px solid #36463f;border-radius:8px;padding:6px 13px;font-size:13px;cursor:pointer;font-family:inherit;display:flex;gap:7px;align-items:center}
+  .menu-btn:hover{background:#30403a}
+  .counter{color:#9fb1ab;font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap}
+
+  .ctrl{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:50}
+  .ctrl button{width:46px;height:46px;border-radius:50%;border:1px solid #36463f;background:#26332f;color:#f4efe4;font-size:20px;cursor:pointer;display:grid;place-items:center;transition:.15s}
+  .ctrl button:hover{background:var(--teal);border-color:var(--teal)}
+  .ctrl button:disabled{opacity:.3;cursor:not-allowed}
+
+  .toc{position:fixed;inset:0;background:rgba(12,18,17,.94);z-index:100;display:none;padding:60px 24px;overflow:auto}
+  .toc.open{display:block}
+  .toc h2{color:#fff;text-align:center;margin-bottom:6px}
+  .toc .sub{color:#9fb1ab;text-align:center;margin-bottom:26px;font-size:14px}
+  .toc-grid{max-width:980px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+  .toc-item{background:#1d2927;border:1px solid #2f3f3a;border-radius:10px;padding:13px 15px;cursor:pointer;color:#e7efec;display:flex;gap:12px;align-items:center;transition:.15s;text-align:left;font-family:inherit}
+  .toc-item:hover{background:var(--teal-deep);border-color:var(--teal)}
+  .toc-item .tnum{font-size:13px;font-weight:800;color:var(--gold);min-width:26px}
+  .toc-item .tt{font-size:14.5px;font-weight:600;line-height:1.3}
+  .toc-close{position:fixed;top:16px;right:20px;background:#26332f;color:#fff;border:1px solid #36463f;border-radius:8px;width:40px;height:40px;font-size:20px;cursor:pointer}
+  .toc-sec{grid-column:1/-1;color:var(--gold);font-size:13px;letter-spacing:.2em;font-weight:700;margin:12px 0 2px;padding-left:4px}
+
+  @media (max-width:760px){
+    .stage{padding:50px 8px 60px}
+    .slide{
+      position:relative; aspect-ratio:auto; width:100%;
+      min-height:auto; margin:0 auto 18px;
+    }
+    .pad{padding:clamp(18px,5vw,30px)}
+    .grid2,.grid3,.grid4,.profile-grid{grid-template-columns:1fr}
+    .profile-grid{align-content:start;gap:14px}
+    .profile-photo img{max-height:42vh;width:auto;margin:0 auto}
+    .profile-photo{display:flex;justify-content:center;background:transparent;border:none}
+    h1{font-size:clamp(26px,8vw,40px)}
+    h2{font-size:clamp(20px,6vw,30px)}
+    .lead{font-size:clamp(15px,4.2vw,19px)}
+    p,li{font-size:clamp(13px,3.8vw,16px)}
+    .sm{font-size:clamp(12px,3.4vw,14px)}
+    .big-q{font-size:clamp(24px,7vw,36px)}
+    .quote{font-size:clamp(20px,6vw,30px)}
+    .flow{flex-direction:column}
+    .nav .brand{font-size:12px}
+    .counter{display:none}
+    .role-tags .chip{font-size:13px}
+    .contact-grid{grid-template-columns:1fr;gap:12px}
+    .contact-card{padding:18px 18px}
+    .contact-card .ci{font-size:34px;margin-bottom:8px}
+  }
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="brand">社區健康體適能 <span>×</span> AI 應用推廣</div>
+  <div class="spacer"></div>
+  <span class="counter"><span id="cur">1</span> / <span id="tot">1</span></span>
+  <button class="menu-btn" onclick="openTOC()">☰ 目錄</button>
+</div>
+
+<div class="stage" id="stage">
+
+  <!-- 1 COVER -->
+  <section class="slide cover active" data-title="封面" data-sec="開場">
+    <span class="tag"></span>
+    <div class="pad vcenter">
+      <div class="eyebrow">社區健康促進 · 實務分享</div>
+      <h1>社區健康體適能<br>AI 應用推廣實務分享</h1>
+      <p class="lead" style="margin-top:20px">把人工智慧變成里長手上最好用的工具<br>從找教案、做海報到架網頁，一步步帶你會用</p>
+      <div style="margin-top:24px">
+        <span class="chip">📅 115/07/03（五）13:30–15:00</span>
+        <span class="chip">📍 北市聯醫中興院區 六樓第一會議室</span>
+        <span class="chip">👥 社區里長 · 理事長</span>
+      </div>
+      <div class="attr" style="margin-top:22px">設計者：愛迪樂　鍾孟修　職能治療師</div>
+    </div>
+    <div class="pg">01</div>
+  </section>
+
+  <!-- 2 講者詳細介紹 -->
+  <section class="slide" data-title="講者介紹" data-sec="開場">
+    <span class="tag"></span>
+    <div class="pad vcenter">
+      <div class="profile-grid">
+        <div class="profile-photo"><img src="assets/profile.png" alt="鍾孟修 職能治療師"></div>
+        <div>
+          <div class="eyebrow">關於講者</div>
+          <h2>鍾孟修　職能治療師</h2>
+          <p class="lead">職能治療師 / 執行長 · 愛迪樂健康促進團隊</p>
+          <div class="rule"></div>
+          <div class="grid2" style="gap:14px">
+            <div>
+              <h3 style="color:var(--teal-deep);font-size:16px;margin-bottom:6px">經營與服務據點</h3>
+              <p class="sm">愛迪樂有限公司、居家／物理／中山聯合治療所、新北長照機構、三重失智症據點、東湖國小社區長照機構、銀光復能咖啡館 C 單位，五股日照中心籌備中。</p>
+            </div>
+            <div>
+              <h3 style="color:var(--teal-deep);font-size:16px;margin-bottom:6px">學會與協會職務</h3>
+              <p class="sm">社團法人台灣生活復能健康促進協會 理事長、關懷小丑協會 監事、長庚大學職能治療系系友會 監事、Homeseen 失智症遊戲包 共同創辦人。</p>
+            </div>
+          </div>
+          <h3 style="color:var(--terra-deep);font-size:16px;margin:14px 0 6px">專業證照與專長</h3>
+          <div class="role-tags">
+            <span class="chip">職能治療師</span>
+            <span class="chip">銀髮體適能教練</span>
+            <span class="chip">皮拉提斯教練 ABC 級</span>
+            <span class="chip">MAT 功能性評估國際認證</span>
+            <span class="chip">認知桌遊活動設計</span>
+            <span class="chip">簡報遊戲化教學設計</span>
+            <span class="chip">長照復能</span>
+            <span class="chip">遊戲化教學</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pg">02</div>
+  </section>
+
+  <!-- 3 大綱 -->
+  <section class="slide" data-title="今日大綱" data-sec="開場">
+    <span class="tag"></span>
+    <div class="pad vcenter">
+      <div class="num-badge"><span class="dot">綱</span>今日大綱</div>
+      <div class="grid3">
+        <div class="card terra"><span class="ic">🌏</span><h3>為什麼是現在</h3><p class="sm" style="margin-top:4px">高齡社區的挑戰與契機</p></div>
+        <div class="card teal"><span class="ic">🤖</span><h3>AI 工具實戰</h3><p class="sm" style="margin-top:4px">七個能直接用的應用</p></div>
+        <div class="card gold"><span class="ic">📚</span><h3>教案資料庫</h3><p class="sm" style="margin-top:4px">52 週運動 × 日照靈感</p></div>
+      </div>
+      <div class="grid3" style="margin-top:16px">
+        <div class="card"><span class="ic">🛠️</span><h3>怎麼開始用</h3><p class="sm" style="margin-top:4px">里長也能上手的流程</p></div>
+        <div class="card gold"><span class="ic">⚠️</span><h3>注意事項</h3><p class="sm" style="margin-top:4px">用 AI 的眉角</p></div>
+        <div class="card teal"><span class="ic">💬</span><h3>交流與聯絡</h3><p class="sm" style="margin-top:4px">提問與後續連結</p></div>
+      </div>
+      <p class="sm" style="margin-top:18px;color:var(--muted)">＊點右上「☰ 目錄」可快速跳到任一頁；用 ← → 方向鍵或下方按鈕翻頁。</p>
+    </div>
+    <div class="pg">03</div>
+  </section>
+
+  <!-- 4 SECTION -->
+  <section class="slide section-cov" data-title="Part 1 為什麼是現在" data-sec="現況">
+    <span class="tag"></span>
+    <div class="pad vcenter">
+      <div class="eyebrow">PART 01</div>
+      <h1>為什麼是現在？</h1>
+      <p class="lead" style="margin-top:16px">高齡社區的挑戰，正好是 AI 能幫上忙的地方</p>
+    </div>
+    <div class="pg">04</div>
+  </section>
+
+  <!-- 互動問答 -->
+  <section class="slide" data-title="互動問答：猜猜台灣有多老" data-sec="現況">
+    <span class="tag"></span>
+    <div class="pad vcenter">
+      <div class="num-badge"><span class="dot">?</span>來玩個遊戲：猜猜台灣有多老</div>
+      <p class="sm" style="color:var(--muted);margin-bottom:10px">點選你覺得的答案，<strong>點下去才會揭曉</strong>——猜猜看，準備好了嗎？</p>
+      <div class="quiz">
+        <div class="qcard">
+          <div class="q"><span class="qn">1</span>台灣目前 100 歲以上的人瑞有幾位？</div>
+          <div class="opts">
+            <button class="opt" onclick="quizPick(this,0)">約 1,500 位</button>
+            <button class="opt" onclick="quizPick(this,0)">約 3,000 位</button>
+            <button class="opt" onclick="quizPick(this,1)">約 5,700 位</button>
+          </div>
+          <div class="ans">✅ 約 <strong>5,749 位</strong>（2025年，創歷年新高，20年來成長近 8 倍）</div>
+        </div>
+
+        <div class="qcard">
+          <div class="q"><span class="qn">2</span>全台灣有多少位 65 歲以上長者？</div>
+          <div class="opts">
+            <button class="opt" onclick="quizPick(this,0)">約 300 萬</button>
+            <button class="opt" onclick="quizPick(this,1)">約 470 萬</button>
+            <button class="opt" onclick="quizPick(this,0)">約 600 萬</button>
+          </div>
+          <div class="ans">✅ 約 <strong>467 萬人</strong>（占總人口 20%，每 5 人就有 1 位）</div>
+        </div>
+
+        <div class="qcard">
+          <div class="q"><span class="qn">3</span>台灣目前最年長的長輩幾歲？</div>
+          <div class="opts">
+            <button class="opt" onclick="quizPick(this,0)">110 歲</button>
+            <button class="opt" onclick="quizPick(this,0)">116 歲</button>
+            <button class="opt" onclick="quizPick(this,1)">122 歲</button>
+          </div>
+          <div class="ans">✅ <strong>122 歲女性</strong>（台北市，2025年，也創新高）</div>
+        </div>
+
+        <div class="qcard">
+          <div class="q"><span class="qn">4</span>台灣人的平均壽命是幾歲？</div>
+          <div class="opts">
+            <button class="opt" onclick="quizPick(this,0)">76.5 歲</button>
+            <button class="opt" onclick="quizPick(this,1)">80.8 歲</button>
+            <button class="opt" onclick="quizPick(this,0)">85.2 歲</button>
+          </div>
+          <div class="ans">✅ <strong>80.77 歲</strong>（男性 77.4、女性 84.3；2024年內政部）</div>
+        </div>
+
+        <div class="qcard" style="grid-column:1/-1">
+          <div class="q"><span class="qn">5</span>為什麼男性的平均壽命比女性低？（男女差近 7 歲）</div>
+          <div class="opts">
+            <button class="opt" onclick="quizPick(this,0)">只是統計上的巧合</button>
+            <button class="opt" onclick="quizPick(this,1)">生理保護較少＋生活習慣風險較高</button>
+            <button class="opt" onclick="quizPick(this,0)">男性天生比較脆弱</button>
+          </div>
+          <div class="ans">✅ 綜合原因：女性有<strong>雌激素的心血管保護</strong>；男性則<strong>抽菸喝酒比例高、風險行為多、較少主動就醫</strong>，加上部分職業風險——是生理與生活習慣共同的結果。</div>
+        </div>
+      </div>
+    </div>
+    <div class="pg">05</div>
+  </section>
+
+  <!-- 高齡社區的挑戰 -->
+  <section class="slide" data-title="高齡社區的挑戰" data-sec="現況">
+    <span class="tag"></span>
+    <div class="pad vcenter">
+      <div class="num-badge"><span class="dot">1</span>超高齡社會，里長的責任更重了</div>
+      <div class="grid3">
+        <div class="card terra"><div class="stat">20%</div><div class="stat-l">2025 年起每 5 人有 1 位是 65 歲以上長者</div></div>
+        <div class="card teal"><div class="stat">3大</div><div class="stat-l">活動老是重複、備課花時間、人多難帶</div></div>
+        <div class="card gold"><div class="stat">5分</div><div class="stat-l">過去要花數天的教材，AI 幾分鐘出雛形</div></div>
+      </div>
+      <p class="lead" style="margin-top:20px">社區，是長輩離家最近的健康據點。<strong style="color:var(--terra-deep)">里長與理事長，就是健康促進的第一線推手</strong>——而 AI，可以當你最得力的助理。</p>
+    </div>
+    <div class="pg">06</div>
+  </section>
+
+  <!-- 6 SECTION -->
+  <section class="slide section-cov" data-title="Part 2 AI 工具實戰" data-sec="AI 應用">
+    <span class="tag"></span>
+    <div class="pad vcenter">
+      <div class="eyebrow">PART 02 · 重頭戲</div>
+      <h1>AI 工具實戰<br>七個能直接用的應用</h1>
+      <p class="lead" style="margin-top:16px">從做筆記、讀重點，到生圖、做網頁，一個一個帶你會用</p>
+    </div>
+    <div class="pg">07</div>
+  </section>
+
+  <!-- 7 Typeless -->
+  <section class="slide" data-title="應用1 Typeless 語音轉文字" data-sec="AI 應用">
+    <span class="tag"></span>
+    <div class="pad vcenter">
+      <span class="pill">應用 1 · 動口不動手</span>
+      <h2>Typeless — 用說的就能變成文字筆記</h2>
+      <div class="rule"></div>
+      <div class="grid2" style="align-items:center">
+        <div>
+          <p class="lead">Typeless 是一款<strong>語音轉文字</strong>工具，講話就能整理成通順的文字，還會<strong>自動去掉「嗯、啊」等贅字</strong>，特別適合不習慣打字的里長。</p>
+          <h3 style="color:var(--teal-deep);font-size:17px;margin:14px 0 6px">電腦版怎麼安裝</h3>
+          <ul class="clean sm">
+            <li>到官網 <a class="lnk" href="https://www.typeless.com/downloads" target="_blank" rel="noopener">typeless.com/downloads</a> 下載（支援 <strong>Mac 與 Windows</strong>）</li>
+            <li>用 Email 或 Google 帳號<strong>註冊登入</strong></li>
+            <li>開啟<strong>麥克風權限</strong>，做一次約 30 秒的語音校正</li>
+            <li>之後在<strong>任何輸入框</strong>按快捷鍵就能說話打字</li>
+          </ul>
+          <h3 style="color:var(--terra-deep);font-size:17px;margin:14px 0 6px">社區怎麼用</h3>
+          <ul class="clean sm">
+            <li>開會、訪視長輩時，<strong>邊講邊記</strong>，事後不用重打</li>
+            <li>把活動構想用講的，馬上變成可編輯的文字稿</li>
+          </ul>
+        </div>
+        <div class="demo">
+          <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span>Typeless</div>
+          <div class="body">
+            <div style="text-align:center;font-size:46px;margin:8px 0">🎙️</div>
+            <div class="card teal" style="font-size:14px">「今天<strong>下午兩點</strong>在活動中心辦<strong>體智能團康</strong>，大概<strong>二十位</strong>長輩參加，要準備<strong>骰子和圖卡</strong>。」</div>
+            <p class="sm" style="text-align:center;color:var(--muted);margin-top:10px">↓ 自動整理成文字</p>
+            <div class="card" style="font-size:13px;margin-top:6px">活動：體智能團康｜時間：14:00｜地點：活動中心｜人數：20｜教具：骰子、圖卡</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pg">08</div>
+  </section>
+
+  <!-- Typeless 電腦版安裝與教學 -->
+  <section class="slide" data-title="Typeless 電腦版安裝與應用" data-sec="AI 應用">
+    <span class="tag"></span>
+    <div class="pad vcenter">
+      <span class="pill teal">應用 1＋ · 電腦版完整教學</span>
+      <h2>Typeless 電腦版：安裝與應用</h2>
+      <div class="rule"></div>
+      <div class="grid2" style="align-items:start">
+        <div>
+          <h3 style="color:var(--teal-deep);font-size:17px;margin-bottom:6px">📥 安裝四步驟</h3>
+          <div class="flow" style="flex-direction:column;gap:6px">
+            <div class="step"><div class="n">STEP 1</div><span class="sm">瀏覽器開 <a class="lnk" href="https://www.typeless.com/downloads" target="_blank" rel="noopener">typeless.com/downloads</a>，選 <strong>Mac</strong> 或 <strong>Windows</strong> 下載</span></div>
+            <div class="step"><div class="n">STEP 2</div><span class="sm">安裝後用 <strong>Email 或 Google</strong> 登入</span></div>
+            <div class="step"><div class="n">STEP 3</div><span class="sm">同意<strong>麥克風</strong>權限，安靜唸 30 秒做<strong>語音校正</strong></span></div>
+            <div class="step"><div class="n">STEP 4</div><span class="sm">把游標點在任何輸入框，按快捷鍵開始說話</span></div>
+          </div>
+          <div class="card gold" style="margin-top:12px">
+            <h3 style="font-size:16px">⌨️ 啟動快捷鍵</h3>
+            <p class="sm" style="margin-top:4px">Mac：按住 <strong>Fn 鍵</strong>　｜　Windows：<strong>Ctrl + Shift + ;</strong><br>說完放開，文字就出現在游標位置。</p>
+          </div>
+          <div style="margin-top:10px">
+            <span class="sm" style="color:var(--muted);margin-right:6px">📱 手機版下載：</span>
+            <a class="dl" href="https://apps.apple.com/us/search?term=Typeless" target="_blank" rel="noopener"> iOS App Store</a>
+            <a class="dl terra" href="https://play.google.com/store/apps/details?id=com.typeless.mobile" target="_blank" rel="noopener">▶ Android Google Play</a>
+          </div>
+          <p class="sm" style="margin-top:6px;color:var(--muted)">＊也可到 <a class="lnk" href="https://www.typeless.com/downloads" target="_blank" rel="noopener">typeless.com/downloads</a> 掃 QR code 安裝手機版。</p>
+        </div>
+        <div>
+          <h3 style="color:var(--terra-deep);font-size:17px;margin-bottom:6px">🎯 三個實用功能</h3>
+          <div class="card teal" style="margin-bottom:8px">
+            <h3 style="font-size:16px">① 自動潤稿</h3>
+            <p class="sm" style="margin-top:3px">自動去掉「嗯、啊、那個」等贅字，講錯自己改，它只留<strong>最後的正確版本</strong>。</p>
+          </div>
+          <div class="card" style="margin-bottom:8px">
+            <h3 style="font-size:16px">② 跨程式通用</h3>
+            <p class="sm" style="margin-top:3px">Email、Line、Word、瀏覽器…<strong>任何能打字的地方</strong>都能用語音輸入。</p>
+          </div>
+          <div class="card gold">
+            <h3 style="font-size:16px">③ 說了就翻譯</h3>
+            <p class="sm" style="margin-top:3px">開啟翻譯模式，用<strong>中文講</strong>，直接輸出成<strong>其他語言</strong>，支援 100+ 語言。</p>
+          </div>
+          <p class="sm" style="margin-top:10px;color:var(--muted)">＊免費版每週 2,000 字；語音資料零留存、不外傳，隱私安全。</p>
+        </div>
+      </div>
+    </div>
+    <div class="pg">09</div>
+  </section>
+  <section class="slide" data-title="應用2 Chrome 問問 Gemini" data-sec="AI 應用">
+    <span class="tag"></span>
+    <div class="pad vcenter">
+      <span class="pill teal">應用 2 · 邊看網頁邊問</span>
+      <h2>Chrome 內建「問問 Gemini」</h2>
+      <div class="rule"></div>
+      <p class="lead">在 Chrome 瀏覽器裡，直接叫出 Gemini 幫你讀網頁、看影片、看圖片，不用切換到別的地方。</p>
+      <div class="grid3" style="margin-top:16px">
+        <div class="card terra"><span class="ic">📄</span><h3>讀取重點內容</h3><p class="sm" style="margin-top:6px">一篇長文章、長公告，請它「<strong>整理成 5 個重點</strong>」或「<strong>用台語白話說一次</strong>」。</p></div>
+        <div class="card teal"><span class="ic">🎵</span><h3>讀音樂編排動作</h3><p class="sm" style="margin-top:6px">看著一首歌或律動影片，請它「<strong>幫我把這首歌設計成長輩坐姿動作</strong>，一段一段分解」。</p></div>
+        <div class="card gold"><span class="ic">🖼️</span><h3>圖片修圖／看圖</h3><p class="sm" style="margin-top:6px">對著圖片請它「<strong>描述這張圖</strong>」「<strong>幫我改成適合海報的文案</strong>」「去背、調整風格」。</p></div>
+      </div>
+      <div class="card" style="margin-top:16px"><h3 style="font-size:16px">🔎 怎麼叫出來</h3><p class="sm" style="margin-top:4px">用最新版 Chrome 登入 Google 帳號 → 點右上角或網址列旁的 <strong>Gemini 圖示</strong> → 在側邊欄輸入問題，它會自動讀取你正在看的這個頁面。</p>
+      <div style="margin-top:10px">
+        <a class="dl" href="https://www.google.com/chrome/" target="_blank" rel="noopener">🌐 Chrome 電腦版下載</a>
+        <a class="dl gold" href="https://gemini.google.com/" target="_blank" rel="noopener">✦ Gemini 網頁版</a>
+      </div>
+      <p class="sm" style="margin-top:8px;color:var(--muted)">＊手機版：App Store 或 Google Play 搜尋「<strong>Chrome</strong>」「<strong>Google Gemini</strong>」即可安裝。</p>
+      </div>
+    </div>
+    <div class="pg">10</div>
+  </section>
+
+  <!-- 9 海報 + Canva -->
+  <section class="slide" data-title="應用3 生圖海報 + Canva 魔法圖層" data-sec="AI 應用">
+    <span class="tag"></span>
+    <div class="pad vcenter">
+      <span class="pill">應用 3 · 做出漂亮海報</span>
+      <h2>Gemini / ChatGPT 生海報 → Canva 魔法圖層修改</h2>
+      <div class="rule"></div>
+      <div class="flow">
+        <div class="step"><div class="n">STEP 1</div><h3 style="margin:5px 0;font-size:17px">描述海報</h3><p class="sm">跟 Gemini 或 ChatGPT 說：「做一張<strong>社區長輩運動日</strong>海報，溫暖、明亮、有長輩運動的畫面」。</p></div>
+        <div class="step"><div class="n">STEP 2</div><h3 style="margin:5px 0;font-size:17px">生成圖片</h3><p class="sm">AI 產出海報底圖，不滿意就請它<strong>換風格、換配色、換構圖</strong>。</p></div>
+        <div class="step"><div class="n">STEP 3</div><h3 style="margin:5px 0;font-size:17px">進 Canva</h3><p class="sm">把圖上傳 Canva，用「<strong>魔法圖層 / Magic Edit</strong>」框選想改的地方。</p></div>
+        <div class="step"><div class="n">STEP 4</div><h3 style="margin:5px 0;font-size:17px">微調出圖</h3><p class="sm">改文字、換掉某個物件、加上活動資訊，輸出成<strong>正式海報</strong>。</p></div>
+      </div>
+      <div class="grid2" style="margin-top:16px">
+        <div class="card teal"><h3 style="font-size:16px">💡 為什麼要兩個工具接力</h3><p class="sm" style="margin-top:4px">AI 生圖負責「<strong>從無到有</strong>」給你好看的底圖；Canva 魔法圖層負責「<strong>精準修改</strong>」文字與細節，兩者搭配最省力。</p></div>
+        <div class="card gold"><h3 style="font-size:16px">💡 小提醒</h3><p class="sm" style="margin-top:4px">就算 AI 海報上<strong>已經有文字也沒關係</strong>，進 Canva 用<strong>魔法圖層</strong>能把文字辨識出來，再直接<strong>改成你要的內容</strong>。</p></div>
+      </div>
+      <div style="margin-top:14px">
+        <span class="sm" style="color:var(--muted);margin-right:6px">前往註冊使用：</span>
+        <a class="dl" href="https://chatgpt.com/" target="_blank" rel="noopener">💬 ChatGPT 網頁版</a>
+        <a class="dl gold" href="https://gemini.google.com/" target="_blank" rel="noopener">✦ Gemini 網頁版</a>
+        <span class="sm" style="color:var(--muted);margin-left:4px">手機版在 App Store／Google Play 搜「ChatGPT」「Google Gemini」</span>
+      </div>
+    </div>
+    <div class="pg">11</div>
+  </section>
+
+  <!-- 海報提示詞 -->
+  <section class="slide" data-title="海報提示詞怎麼寫不出錯" data-sec="AI 應用">
+    <span class="tag"></span>
+    <div class="pad vcenter">
+      <span class="pill">應用 3＋ · 生海報心法</span>
+      <h2>海報提示詞怎麼寫，比較不會出錯</h2>
+      <div class="rule"></div>
+      <div class="grid2" style="align-items:start">
+        <div>
+          <p class="lead" style="font-size:18px">把這 <strong>6 個要素</strong>講清楚，AI 生出來的海報最接近你要的：</p>
+          <ul class="clean sm" style="margin-top:12px">
+            <li><strong>① 主題用途</strong>：社區長輩運動日宣傳海報</li>
+            <li><strong>② 風格氛圍</strong>：溫暖、明亮、有活力（見下一頁）</li>
+            <li><strong>③ 畫面內容</strong>：長輩開心做伸展、戶外公園</li>
+            <li><strong>④ 配色</strong>：米色＋橘綠，柔和不刺眼</li>
+            <li><strong>⑤ 版面比例</strong>：直式 A4／正方形 1:1（FB 用）</li>
+            <li><strong>⑥ 留白</strong>：上方留空，方便之後加標題文字</li>
+          </ul>
+        </div>
+        <div>
+          <div class="card teal">
+            <h3 style="font-size:16px">✅ 好的提示詞範例</h3>
+            <p class="sm" style="margin-top:6px">「請生成一張<strong>社區長輩運動日</strong>的宣傳海報，<strong>溫暖明亮</strong>的插畫風格，畫面是<strong>幾位長輩在公園開心做伸展操</strong>，<strong>米色與橘綠配色</strong>，<strong>直式版面</strong>，<strong>上方留白</strong>方便加標題。」</p>
+          </div>
+          <div class="card gold" style="margin-top:10px">
+            <h3 style="font-size:16px">⚠️ 三個避免出錯的訣竅</h3>
+            <ul class="clean sm" style="margin-top:6px">
+              <li><strong>文字可直接生</strong>：海報有字沒關係，進 Canva 用魔法圖層讀出後再改</li>
+              <li><strong>一次改一個地方</strong>：不滿意就說「只換配色」「只換背景」</li>
+              <li><strong>講具體</strong>：不要只說「好看」，要說清楚風格與顏色</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pg">12</div>
+  </section>
+
+  <!-- 四種海報風格 -->
+  <section class="slide" data-title="四種海報風格選擇" data-sec="AI 應用">
+    <span class="tag"></span>
+    <div class="pad vcenter">
+      <span class="pill teal">應用 3＋ · 挑一種風格</span>
+      <h2>四種海報風格，挑你喜歡的跟 AI 說</h2>
+      <div class="rule"></div>
+      <div class="grid4">
+        <div class="card" style="background:#f3e6c4;border-color:#dcc88a">
+          <div style="height:90px;border-radius:8px;background:linear-gradient(135deg,#f7d97a,#e8a13c);display:grid;place-items:center;font-size:34px;margin-bottom:10px">🎨</div>
+          <h3 style="font-size:18px">溫暖插畫風</h3>
+          <p class="sm" style="margin-top:6px">手繪、柔和、親切，最適合長輩。</p>
+          <p class="sm" style="color:var(--teal-deep);margin-top:6px">提示詞：「<strong>warm illustration、溫暖手繪插畫</strong>」</p>
+        </div>
+        <div class="card" style="background:#dcebe6;border-color:#a9cfc5">
+          <div style="height:90px;border-radius:8px;background:linear-gradient(135deg,#7fc3b6,#2f7d72);display:grid;place-items:center;font-size:34px;margin-bottom:10px">📐</div>
+          <h3 style="font-size:18px">簡約扁平風</h3>
+          <p class="sm" style="margin-top:6px">乾淨、清楚、好讀，資訊一目了然。</p>
+          <p class="sm" style="color:var(--teal-deep);margin-top:6px">提示詞：「<strong>flat design、簡約扁平</strong>」</p>
+        </div>
+        <div class="card" style="background:#f6e3d8;border-color:#e3b89e">
+          <div style="height:90px;border-radius:8px;background:linear-gradient(135deg,#e89b7a,#c8633f);display:grid;place-items:center;font-size:34px;margin-bottom:10px">📷</div>
+          <h3 style="font-size:18px">真實照片風</h3>
+          <p class="sm" style="margin-top:6px">寫實、有溫度，像活動實拍。</p>
+          <p class="sm" style="color:var(--terra-deep);margin-top:6px">提示詞：「<strong>realistic photo、寫實攝影</strong>」</p>
+        </div>
+        <div class="card" style="background:#e7e0ee;border-color:#c5b8d6">
+          <div style="height:90px;border-radius:8px;background:linear-gradient(135deg,#b79fd4,#7a5ca8);display:grid;place-items:center;font-size:34px;margin-bottom:10px">✨</div>
+          <h3 style="font-size:18px">活潑繽紛風</h3>
+          <p class="sm" style="margin-top:6px">鮮豔、有朝氣，吸睛抓注意力。</p>
+          <p class="sm" style="color:#6a4a96;margin-top:6px">提示詞：「<strong>colorful、活潑繽紛</strong>」</p>
+        </div>
+      </div>
+      <p class="sm" style="margin-top:16px;color:var(--muted)">用法：把上面任一句風格提示詞，接在前一頁的範例後面，例如「…<strong>溫暖手繪插畫</strong>風格…」，AI 就會照那個方向生成。</p>
+    </div>
+      <div class="pg">13</div>
+  </section>
+
+  <!-- 製作運動行銷網頁 -->
+  <section class="slide" data-title="應用4 製作運動行銷網頁" data-sec="AI 應用">
+    <span class="tag"></span>
+    <div class="pad vcenter">
+      <span class="pill teal">應用 4 · 做一個專屬網頁</span>
+      <h2>用 AI 製作運動行銷網頁</h2>
+      <div class="rule"></div>
+      <div class="grid2" style="align-items:center">
+        <div>
+          <p class="lead">不會寫程式也沒關係。把需求告訴 AI，它能<strong>直接產生一個網頁</strong>，用來介紹社區運動課程、活動報名或健康資訊。</p>
+          <h3 style="color:var(--teal-deep);font-size:17px;margin:14px 0 6px">怎麼做</h3>
+          <ul class="clean sm">
+            <li>跟 ChatGPT 或 Gemini 說：「幫我做一個<strong>社區運動課程</strong>的單頁網站，有課表、報名、聯絡方式」</li>
+            <li>它會給你一份 <strong>HTML 檔</strong>，存下來用瀏覽器打開就能看</li>
+            <li>不滿意就請它「<strong>換顏色</strong>」「<strong>字大一點</strong>」「<strong>加一個地圖</strong>」</li>
+          </ul>
+        </div>
+        <div class="browser">
+          <div class="top"><span class="d" style="background:#e88"></span><span class="d" style="background:#ec4"></span><span class="d" style="background:#7c7"></span><span class="url">我的社區運動網頁.html</span></div>
+          <div style="padding:18px;background:#f4efe4">
+            <div style="background:var(--teal);color:#fff;padding:12px;border-radius:8px;text-align:center;font-weight:700">🏃 社區樂齡運動日</div>
+            <div class="grid2" style="gap:8px;margin-top:10px">
+              <div class="card" style="padding:10px;text-align:center;font-size:13px">📅 每週三<br>09:00 課表</div>
+              <div class="card" style="padding:10px;text-align:center;font-size:13px">📝 線上<br>報名</div>
+            </div>
+            <div style="background:var(--terra);color:#fff;padding:9px;border-radius:8px;text-align:center;margin-top:8px;font-size:13px;font-weight:700">立即報名</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pg">14</div>
+  </section>
+
+  <!-- 用 AI 把數據做成圖表 -->
+  <section class="slide" data-title="用 AI 把數據做成圖表" data-sec="AI 應用">
+    <span class="tag"></span>
+    <div class="pad vcenter">
+      <span class="pill teal">應用 ＋ · 把成效畫成圖</span>
+      <h2>用 AI 把數據做成圖表</h2>
+      <div class="rule"></div>
+      <div class="grid2" style="align-items:start">
+        <div>
+          <p class="lead">把社區活動的<strong>參與人數、成效、滿意度</strong>做成清楚的圖表，呈報或申請經費時，<strong>一張圖勝過一堆數字</strong>——用 Gemini 或 ChatGPT 就能做。</p>
+          <h3 style="color:var(--teal-deep);font-size:17px;margin:12px 0 6px">📋 複製貼上四步驟</h3>
+          <div class="flow" style="flex-direction:column;gap:6px">
+            <div class="step"><div class="n">STEP 1</div><span class="sm">打開你的 <strong>Excel</strong> 統計表</span></div>
+            <div class="step"><div class="n">STEP 2</div><span class="sm">按 <strong>Ctrl+A</strong> 全選 → <strong>Ctrl+C</strong> 複製</span></div>
+            <div class="step"><div class="n">STEP 3</div><span class="sm">到 Gemini／ChatGPT 對話框 <strong>Ctrl+V</strong> 貼上，說「幫我做成長條圖」</span></div>
+            <div class="step"><div class="n">STEP 4</div><span class="sm">產生圖表後<strong>截圖或下載</strong>，放進海報、簡報</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="demo">
+            <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span>AI 生成圖表 · 參與人數</div>
+            <div class="body">
+              <p class="sm" style="color:var(--muted);margin-bottom:8px;text-align:center">各月運動課程參與人數</p>
+              <div style="display:flex;align-items:flex-end;gap:10px;height:130px;padding:0 6px">
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;height:60px;background:var(--teal);border-radius:4px 4px 0 0"></div><span style="font-size:11px">1月</span></div>
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;height:88px;background:var(--teal);border-radius:4px 4px 0 0"></div><span style="font-size:11px">2月</span></div>
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;height:110px;background:var(--terra);border-radius:4px 4px 0 0"></div><span style="font-size:11px">3月</span></div>
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;height:128px;background:var(--terra);border-radius:4px 4px 0 0"></div><span style="font-size:11px">4月</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="card gold" style="margin-top:10px">
+            <h3 style="font-size:16px">⚠️ 重要：用「貼上內容」，別直接傳檔案</h3>
+            <p class="sm" style="margin-top:4px">直接上傳 Excel 檔，AI 有時會<strong>看錯欄位、產生幻覺</strong>。改用<strong>複製貼上表格內容</strong>，AI 看到的資料最準確、圖表最不會出錯。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="pg">15</div>
+  </section>
+
+  <!-- 上傳與生成圖片 -->
+  <section class="slide" data-title="應用5 上傳與生成圖片" data-sec="AI 應用">
+    <span class="tag"></span>
+    <div class="pad vcenter">
+      <span class="pill">應用 5 · 幫網頁加上圖片</span>
+      <h2>上傳圖片，或生成特定圖片再放上網頁</h2>
+      <div class="rule"></div>
+      <div class="grid2">
+        <div class="card teal">
+          <span class="ic">📤</span>
+          <h3>上傳自己的照片</h3>
+          <p class="sm" style="margin-top:6px">把社區活動的實拍照，放進網頁的圖片資料夾，再請 AI 幫你「<strong>把這張圖加到網頁的課程介紹區</strong>」。</p>
+          <ul class="clean sm" style="margin-top:8px">
+            <li>照片先在手機或 Canva 裁切好</li>
+            <li>檔名用<strong>英文或數字</strong>，避免出錯</li>
+          </ul>
+        </div>
+        <div class="card gold">
+          <span class="ic">✨</span>
+          <h3>生成需要的圖片</h3>
+          <p class="sm" style="margin-top:6px">沒有合適照片時，請 AI「<strong>生成一張長輩在公園做伸展操的插畫</strong>」，再下載放進網頁。</p>
+          <ul class="clean sm" style="margin-top:8px">
+            <li>插畫風格較安全，<strong>不涉及真人肖像</strong></li>
+            <li>下載後同樣放進圖片資料夾引用</li>
+          </ul>
+        </div>
+      </div>
+      <p class="lead" style="margin-top:16px">不論上傳或生成，重點都是：<strong style="color:var(--terra-deep)">圖片和網頁檔放在一起，網頁才找得到它。</strong></p>
+    </div>
+    <div class="pg">16</div>
+  </section>
+
+  <!-- 12 GitHub -->
+  <section class="slide" data-title="應用6 上傳 GitHub 上線" data-sec="AI 應用">
+    <span class="tag"></span>
+    <div class="pad vcenter">
+      <span class="pill teal">應用 6 · 讓網頁有網址</span>
+      <h2>上傳 GitHub，網頁就能分享給大家</h2>
+      <div class="rule"></div>
+      <div class="grid2" style="align-items:center">
+        <div>
+          <p class="lead">做好的網頁放在電腦裡別人看不到。把它放上 <strong>GitHub Pages</strong>（免費），就會有一個<strong>專屬網址</strong>，能貼到 Line 群組分享。</p>
+          <h3 style="color:var(--teal-deep);font-size:17px;margin:12px 0 6px">上線五步驟</h3>
+          <ul class="clean sm">
+            <li>註冊 <strong>GitHub</strong> 免費帳號，建立一個 repository</li>
+            <li>把網頁檔<strong>命名為 <span style="color:var(--terra-deep)">index.html</span></strong>，連同圖片一起上傳</li>
+            <li>進 repository 的 <strong>Settings → Pages</strong></li>
+            <li>Source 的分支（Branch）選 <strong style="color:var(--terra-deep)">main</strong>、資料夾選 <strong>/(root)</strong>，按 <strong>Save</strong></li>
+            <li>稍等 1–2 分鐘，系統給你一組網址，貼給里民即可打開</li>
+          </ul>
+          <p class="sm" style="margin-top:8px;color:var(--muted)">＊檔名一定要是 <strong>index.html</strong>，Pages 才找得到首頁；分支沒選 main 會顯示不出來。不熟時可請 AI「<strong>一步一步教我把 index.html 上傳到 GitHub Pages</strong>」。</p>
+        </div>
+        <div class="browser">
+          <div class="top"><span class="d" style="background:#e88"></span><span class="d" style="background:#ec4"></span><span class="d" style="background:#7c7"></span><span class="url">Settings → Pages</span></div>
+          <div style="padding:18px;background:#fff">
+            <p class="sm" style="font-weight:700;margin-bottom:8px">GitHub Pages 設定</p>
+            <div class="card" style="padding:10px;font-size:13px;margin-bottom:7px">📄 Branch：<strong style="color:var(--terra-deep)">main</strong>　📁 /(root)</div>
+            <div class="card" style="padding:10px;font-size:13px;margin-bottom:7px">🗂️ 首頁檔名：<strong style="color:var(--terra-deep)">index.html</strong></div>
+            <div style="background:var(--teal);color:#fff;padding:8px;border-radius:8px;text-align:center;font-size:13px;font-weight:700">✓ Save → 網址產生</div>
+            <p class="sm" style="color:var(--muted);margin-top:8px;text-align:center">你的帳號.github.io/專案名</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pg">17</div>
+  </section>
+
+  <!-- 13 怎麼問 -->
+  <section class="slide" data-title="應用7 怎麼問 AI 結果差很多" data-sec="AI 應用">
+    <span class="tag"></span>
+    <div class="pad vcenter">
+      <span class="pill">應用 7 · 共通心法</span>
+      <h2>怎麼「問」AI，結果差很多</h2>
+      <div class="rule"></div>
+      <div class="grid2">
+        <div class="card" style="border-color:#d99">
+          <span class="pill" style="background:#b35">😐 普通問法</span>
+          <p style="margin-top:8px">「給我一個長輩遊戲」</p>
+          <p class="sm" style="color:var(--muted);margin-top:8px">→ 答案籠統，還要自己改半天</p>
+        </div>
+        <div class="card teal">
+          <span class="pill teal">😍 加料問法</span>
+          <p style="margin-top:8px">「給我一個適合<strong>15 位、含輪椅長輩</strong>的<strong>坐姿團康</strong>，要<strong>動腦＋手部運動</strong>，<strong>10 分鐘</strong>內，<strong>不用器材</strong>。」</p>
+          <p class="sm" style="color:var(--teal-deep);margin-top:8px">→ 直接給出能用的完整活動</p>
+        </div>
+      </div>
+      <p class="lead" style="margin-top:16px">秘訣是把<strong style="color:var(--terra-deep)">「對象、人數、目標、限制」</strong>講清楚——不論哪一個 AI 工具都適用。</p>
+    </div>
+    <div class="pg">18</div>
+  </section>
+
+  <!-- SECTION: 運動重點 -->
+  <section class="slide section-cov" data-title="Part 3 運動科學重點" data-sec="運動重點">
+    <span class="tag"></span>
+    <div class="pad vcenter">
+      <div class="eyebrow">PART 03 · 專業核心</div>
+      <h1>運動科學重點<br>動對了，才有效</h1>
+      <p class="lead" style="margin-top:16px">AI 是工具，這幾個運動原則，是讓長輩真正受益的關鍵</p>
+    </div>
+    <div class="pg">19</div>
+  </section>
+
+  <!-- 運動重點1 肌力與防跌 -->
+  <section class="slide" data-title="肌力訓練與防跌" data-sec="運動重點">
+    <span class="tag"></span>
+    <div class="pad vcenter">
+      <div class="num-badge"><span class="dot">1</span>肌力訓練與防跌</div>
+      <div class="grid2" style="align-items:start">
+        <div>
+          <div class="card teal" style="margin-bottom:12px">
+            <h3 style="font-size:18px">⚡ 快肌，才是防跌關鍵</h3>
+            <p class="sm" style="margin-top:6px">肌肉分<strong>慢肌</strong>（耐力）與<strong>快肌</strong>（爆發力）。老化會<strong>優先流失快肌</strong>，正是它讓我們能快速反應、踩穩腳步。</p>
+          </div>
+          <p class="sm">研究指出，針對<strong style="color:var(--terra-deep)">快肌的爆發力訓練（power training）對防跌效果更好</strong>——關鍵不在舉多重，而在「<strong>有意識地用較快速度</strong>」完成動作。</p>
+        </div>
+        <div>
+          <div class="card terra" style="margin-bottom:12px">
+            <h3 style="font-size:18px">🧍 3D 核心 × 步態訓練</h3>
+            <p class="sm" style="margin-top:6px">加入<strong>多面向（前後、左右、旋轉）的軀幹核心</strong>與<strong>步態訓練</strong>，能有效降低跌倒風險。</p>
+          </div>
+          <div class="card gold">
+            <h3 style="font-size:16px">🪑 社區怎麼做</h3>
+            <p class="sm" style="margin-top:4px">坐到站「<strong>站起來快、坐下慢</strong>」、彈力帶快速出力、原地踏步轉身——都是安全的快肌與步態練習。</p>
+          </div>
+        </div>
+      </div>
+      <p class="sm" style="margin-top:14px;color:var(--muted)">參考：Harvard / ACSM 與多篇老化肌力研究指出，快肌（Type II）隨年齡優先流失，爆發力訓練結合平衡可降低跌倒風險約 18–34%。實際強度請依長輩狀況調整。</p>
+    </div>
+    <div class="pg">20</div>
+  </section>
+
+  <!-- 運動重點2 認知預防與運動型態 -->
+  <section class="slide" data-title="認知預防與運動型態" data-sec="運動重點">
+    <span class="tag"></span>
+    <div class="pad vcenter">
+      <div class="num-badge"><span class="dot">2</span>認知預防與運動型態</div>
+      <div class="quote" style="margin-bottom:18px">越<span class="hl">多元、多型態、多種類</span>的運動，<br>預防認知退化的效果越好。</div>
+      <div class="grid3">
+        <div class="card terra"><span class="ic">🏃</span><h3 style="font-size:18px">有氧</h3><p class="sm" style="margin-top:6px">走路、律動、踏步，促進腦部血流。</p></div>
+        <div class="card teal"><span class="ic">💪</span><h3 style="font-size:18px">肌力</h3><p class="sm" style="margin-top:6px">阻力與爆發力，維持身體本錢。</p></div>
+        <div class="card gold"><span class="ic">🧠</span><h3 style="font-size:18px">體智能</h3><p class="sm" style="margin-top:6px">邊動邊想，同時刺激身體與大腦。</p></div>
+      </div>
+      <p class="sm" style="margin-top:14px;color:var(--muted)">參考：多項統合分析（multi-component / multidomain exercise）顯示，多元組合的運動對延緩認知退化最有效，尤其結合運動與認知訓練時效果最強，對執行功能與記憶力幫助明顯。</p>
+    </div>
+    <div class="pg">21</div>
+  </section>
+
+  <!-- 運動重點3 活動量與參與動力 -->
+  <section class="slide" data-title="活動量與參與動力" data-sec="運動重點">
+    <span class="tag"></span>
+    <div class="pad vcenter">
+      <div class="num-badge"><span class="dot">3</span>活動量與參與動力</div>
+      <div class="grid2" style="align-items:center">
+        <div>
+          <div class="card teal" style="margin-bottom:12px">
+            <h3 style="font-size:18px">📈 提升活動量 ＞ 只傳遞知識</h3>
+            <p class="sm" style="margin-top:6px">研究發現，<strong>純粹的知識／認知傳遞，對長輩的效果有限</strong>；真正關鍵是<strong>透過有效溝通、提升實際活動量</strong>，健康效益是「<strong>有動就有</strong>」的劑量關係。</p>
+          </div>
+          <p class="sm">換句話說——<strong style="color:var(--terra-deep)">與其反覆講「運動很重要」，不如讓長輩真的動起來。</strong></p>
+        </div>
+        <div class="card gold">
+          <span class="ic">🎉</span>
+          <h3>怎麼讓長輩願意動</h3>
+          <ul class="clean sm" style="margin-top:8px">
+            <li>營造<strong>有趣、好玩</strong>的氛圍，把運動變團康</li>
+            <li>用<strong>遊戲化、競賽、音樂</strong>提升參與動力</li>
+            <li>重視<strong>社交與陪伴</strong>，讓長輩「想再來」</li>
+            <li>給予<strong>成就感與鼓勵</strong>，建立信心</li>
+          </ul>
+        </div>
+      </div>
+      <p class="sm" style="margin-top:14px;color:var(--muted)">參考：多篇統合性回顧指出，對長輩而言，純認知策略不如「樂趣、社會支持、環境支持」有效；趣味與享受感能顯著提升運動的持續參與率。這正是 AI 工具與好玩教案能著力之處。</p>
+    </div>
+    <div class="pg">22</div>
+  </section>
+
+  <!-- SECTION: 教案資料庫 -->
+  <section class="slide section-cov" data-title="Part 4 教案資料庫" data-sec="教案資料庫">
+    <span class="tag"></span>
+    <div class="pad vcenter">
+      <div class="eyebrow">PART 04 · 現成資源</div>
+      <h1>三個教案資料庫<br>直接拿去用</h1>
+      <p class="lead" style="margin-top:16px">不用自己找，運動影片與活動靈感都幫你整理好了</p>
+    </div>
+    <div class="pg">23</div>
+  </section>
+
+  <!-- 樂齡運動教案 -->
+  <section class="slide" data-title="樂齡運動教案資料庫" data-sec="教案資料庫">
+    <span class="tag"></span>
+    <div class="pad vcenter">
+      <span class="pill">資料庫 1 · 一週一部</span>
+      <h2>樂齡運動教案資料庫</h2>
+      <p class="sm" style="margin-bottom:4px"><a class="lnk" href="https://mattsue1003.github.io/exercisemovdara/" target="_blank" rel="noopener">mattsue1003.github.io/exercisemovdara</a></p>
+      <div class="rule"></div>
+      <div class="grid2" style="align-items:center">
+        <div>
+          <p class="lead"><strong>一週一部，52 週都有新的運動刺激</strong>，陪長輩動一動。精選公開的 YouTube 銀髮運動影片，整理成一整年的計畫。</p>
+          <ul class="clean sm" style="margin-top:14px">
+            <li>可依<strong>長度、姿勢、運動類型、語言、地區</strong>篩選</li>
+            <li>能收藏「<strong>我的最愛</strong>」、自行新增影片</li>
+            <li>專為<strong>日照中心、社區關懷據點</strong>非營利推廣設計</li>
+            <li>打開就能用，<strong>找到影片直接帶長輩跟著做</strong></li>
+          </ul>
+        </div>
+        <div class="browser">
+          <div class="top"><span class="d" style="background:#e88"></span><span class="d" style="background:#ec4"></span><span class="d" style="background:#7c7"></span><span class="url">exercisemovdara</span></div>
+          <div style="padding:16px;background:#fff">
+            <div style="background:#e0640f;color:#fff;padding:10px;border-radius:8px;text-align:center;font-weight:700;font-size:14px">🪑 52 週運動計畫</div>
+            <div class="grid2" style="gap:7px;margin-top:9px">
+              <div class="card" style="padding:9px;font-size:12px">▶ 第1週<br>坐姿伸展</div>
+              <div class="card" style="padding:9px;font-size:12px">▶ 第2週<br>毛巾操</div>
+              <div class="card" style="padding:9px;font-size:12px">▶ 第3週<br>有氧律動</div>
+              <div class="card" style="padding:9px;font-size:12px">♥ 我的最愛</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pg">24</div>
+  </section>
+
+  <!-- 16 日照靈感庫 -->
+  <section class="slide" data-title="日照活動靈感庫" data-sec="教案資料庫">
+    <span class="tag"></span>
+    <div class="pad vcenter">
+      <span class="pill teal">資料庫 2 · 找活動看做法</span>
+      <h2>日照活動靈感庫</h2>
+      <p class="sm" style="margin-bottom:4px"><a class="lnk" href="https://mattsue1003.github.io/daycare-activity-library/" target="_blank" rel="noopener">mattsue1003.github.io/daycare-activity-library</a></p>
+      <div class="rule"></div>
+      <div class="grid2" style="align-items:center">
+        <div>
+          <p class="lead">精選<strong>台灣、日本與歐美</strong>以長者活動示範、團康遊戲、認知訓練與樂齡運動為主的 YouTube 頻道。<strong>找活動，直接看做法。</strong></p>
+          <ul class="clean sm" style="margin-top:14px">
+            <li>收錄 <strong>30 個頻道、3 大地區</strong>分類</li>
+            <li>優先收錄「<strong>多數影片可作為活動示範或教案靈感</strong>」的頻道</li>
+            <li>日文、英文影片可用 <strong>YouTube 自動字幕與翻譯</strong></li>
+            <li>帶體能活動前，<strong>記得依長輩狀況與跌倒風險調整</strong></li>
+          </ul>
+        </div>
+        <div class="browser">
+          <div class="top"><span class="d" style="background:#e88"></span><span class="d" style="background:#ec4"></span><span class="d" style="background:#7c7"></span><span class="url">daycare-activity-library</span></div>
+          <div style="padding:16px;background:#fff">
+            <div style="background:var(--teal-deep);color:#fff;padding:10px;border-radius:8px;text-align:center;font-weight:700;font-size:14px">📺 日照活動靈感庫</div>
+            <div class="grid3" style="gap:6px;margin-top:9px">
+              <div class="card" style="padding:8px;text-align:center;font-size:12px">🇹🇼 台灣</div>
+              <div class="card" style="padding:8px;text-align:center;font-size:12px">🇯🇵 日本</div>
+              <div class="card" style="padding:8px;text-align:center;font-size:12px">🌍 歐美</div>
+            </div>
+            <div class="card" style="padding:9px;margin-top:7px;font-size:12px">團康遊戲 · 認知訓練 · 樂齡運動</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pg">25</div>
+  </section>
+
+  <!-- 樂藝銀齡 藝術教案 -->
+  <section class="slide" data-title="樂藝銀齡 藝術教案資料庫" data-sec="教案資料庫">
+    <span class="tag"></span>
+    <div class="pad vcenter">
+      <span class="pill">資料庫 3 · 讓創作成為生活的光</span>
+      <h2>樂藝銀齡｜長者藝術教案資料庫</h2>
+      <p class="sm" style="margin-bottom:4px"><a class="lnk" href="https://mattsue1003.github.io/seniorart/" target="_blank" rel="noopener">mattsue1003.github.io/seniorart</a></p>
+      <div class="rule"></div>
+      <div class="grid2" style="align-items:center">
+        <div>
+          <p class="lead">精選<strong>台灣、日本與歐美</strong>的長者藝術教案，為日照中心、社區據點與居家陪伴，找到合適的<strong>藝術活動靈感</strong>。</p>
+          <ul class="clean sm" style="margin-top:14px">
+            <li>依<strong>地區、媒材、活動能力</strong>三種方式快速篩選</li>
+            <li>媒材涵蓋<strong>紙藝、繪畫、黏土、自然素材、綜合媒材</strong></li>
+            <li>能力分類：手眼協調、精細動作、感官刺激、情緒紓壓、團體合作、<strong>失智友善</strong></li>
+            <li>可<strong>搜尋、加標籤、收藏</strong>，下次直接找到</li>
+          </ul>
+        </div>
+        <div class="browser">
+          <div class="top"><span class="d" style="background:#e88"></span><span class="d" style="background:#ec4"></span><span class="d" style="background:#7c7"></span><span class="url">seniorart</span></div>
+          <div style="padding:16px;background:#fff">
+            <div style="background:#a84a2a;color:#fff;padding:10px;border-radius:8px;text-align:center;font-weight:700;font-size:14px">🎨 樂藝銀齡資料庫</div>
+            <div class="grid3" style="gap:6px;margin-top:9px">
+              <div class="card" style="padding:8px;text-align:center;font-size:12px">🎨 繪畫</div>
+              <div class="card" style="padding:8px;text-align:center;font-size:12px">✂️ 紙藝</div>
+              <div class="card" style="padding:8px;text-align:center;font-size:12px">🌿 自然</div>
+            </div>
+            <div class="card" style="padding:9px;margin-top:7px;font-size:12px">手眼協調 · 情緒紓壓 · 失智友善</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+    <span class="tag"></span>
+    <div class="pad vcenter">
+      <div class="eyebrow">PART 05</div>
+      <h1>怎麼開始用<br>＆ 使用注意事項</h1>
+    </div>
+    <div class="pg">26</div>
+  </section>
+
+  <!-- 18 上手+注意 -->
+  <section class="slide" data-title="上手流程與注意事項" data-sec="上手與注意">
+    <span class="tag"></span>
+    <div class="pad vcenter">
+      <div class="num-badge"><span class="dot">2</span>回去後可以這樣開始</div>
+      <div class="grid3">
+        <div class="card terra"><span class="ic">1️⃣</span><h3>挑一個工具</h3><p class="sm" style="margin-top:6px">先從最簡單的開始，例如用 Chrome 問問 Gemini 讀一篇文章。</p></div>
+        <div class="card teal"><span class="ic">2️⃣</span><h3>用在一場活動</h3><p class="sm" style="margin-top:6px">從教案資料庫挑一部影片，下週就帶長輩跟著動。</p></div>
+        <div class="card gold"><span class="ic">3️⃣</span><h3>找夥伴一起</h3><p class="sm" style="margin-top:6px">和其他里長交流，把好用的教材與網頁分享出去。</p></div>
+      </div>
+      <h3 style="color:var(--terra-deep);font-size:18px;margin:18px 0 8px">⚠️ 使用 AI 的四個眉角</h3>
+      <div class="grid4">
+        <div class="card gold sm"><strong>✅ 會講錯</strong><br>內容務必自己再確認一次</div>
+        <div class="card sm" style="color:#fff;background:var(--terra);border-color:var(--terra-deep)"><strong>🔒 不放個資</strong><br>長輩姓名、病史不要輸入</div>
+        <div class="card teal sm"><strong>🩺 安全第一</strong><br>運動強度依狀況調整</div>
+        <div class="card sm"><strong>🤝 它是幫手</strong><br>溫度來自里長的陪伴</div>
+      </div>
+    </div>
+    <div class="pg">27</div>
+  </section>
+
+  <!-- 19 金句 -->
+  <section class="slide closing" data-title="結語金句" data-sec="結語">
+    <span class="tag"></span>
+    <div class="pad vcenter" style="align-items:center;text-align:center">
+      <div class="big-q">科技不是要取代人情味，<br>而是讓里長有更多時間<br><span style="color:var(--gold)">陪伴長輩。</span></div>
+    </div>
+    <div class="pg">28</div>
+  </section>
+
+  <!-- 聯絡 -->
+  <section class="slide closing" data-title="感謝與聯絡資訊" data-sec="結語">
+    <span class="tag"></span>
+    <div class="pad vcenter">
+      <div class="eyebrow">THANK YOU</div>
+      <h1 style="font-size:clamp(28px,4.6vw,52px)">感謝您的聆聽，歡迎加入追蹤</h1>
+      <p class="lead" style="margin-top:10px;color:#d7e6e1">點選下方卡片，即可直接前往我的粉專與社群</p>
+      <div class="contact-grid">
+        <a class="contact-card" href="https://www.facebook.com/chungmenghsiu" target="_blank" rel="noopener">
+          <div class="ci">👤</div>
+          <div class="ct">Facebook 個人</div>
+          <div class="cd">facebook.com/chungmenghsiu</div>
+          <div class="cgo">點我前往 →</div>
+        </a>
+        <a class="contact-card" href="https://www.facebook.com/profile.php?id=100063748491881" target="_blank" rel="noopener">
+          <div class="ci">📘</div>
+          <div class="ct">粉專</div>
+          <div class="cd">鍾孟修 Matt－職能治療師</div>
+          <div class="cgo">點我前往 →</div>
+        </a>
+        <a class="contact-card" href="https://line.me/ti/g2/HTz-kWvRyDZhYRKHEDjXISFfEyb3xxPlGT16hA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener">
+          <div class="ci">💬</div>
+          <div class="ct">Line 社團</div>
+          <div class="cd">「鍾孟修 職能治療師」社群</div>
+          <div class="cgo">點我加入 →</div>
+        </a>
+      </div>
+      <div class="attr" style="margin-top:auto;align-self:center">設計者：愛迪樂　鍾孟修　職能治療師</div>
+    </div>
+    <div class="pg">29</div>
+  </section>
+
+</div>
+
+<div class="ctrl">
+  <button id="prev" onclick="go(-1)" aria-label="上一頁">↑</button>
+  <button id="next" onclick="go(1)" aria-label="下一頁">↓</button>
+</div>
+
+<div class="toc" id="toc">
+  <button class="toc-close" onclick="closeTOC()">✕</button>
+  <h2 style="color:#fff">目錄</h2>
+  <p class="sub">點選任一項目即可跳頁</p>
+  <div class="toc-grid" id="tocGrid"></div>
+</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  let idx = 0;
+  document.getElementById('tot').textContent = slides.length;
+  document.getElementById('cur').textContent = 1;
+
+  function scrollToSlide(i){
+    if(i<0||i>=slides.length) return;
+    idx=i;
+    slides[i].scrollIntoView({behavior:'smooth', block:'start'});
+  }
+  function go(d){ scrollToSlide(idx+d); }
+  function jump(i){ closeTOC(); scrollToSlide(i); }
+
+  // 隨捲動更新目前頁碼
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){
+        const i = slides.indexOf(en.target);
+        if(i>=0){ idx=i; document.getElementById('cur').textContent = i+1; }
+      }
+    });
+  }, {root:null, threshold:0.5});
+  slides.forEach(s=>obs.observe(s));
+
+  document.addEventListener('keydown', e=>{
+    if(document.getElementById('toc').classList.contains('open')){ if(e.key==='Escape') closeTOC(); return; }
+    if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key==='PageDown'||e.key===' ') { e.preventDefault(); go(1); }
+    if(e.key==='ArrowLeft'||e.key==='ArrowUp'||e.key==='PageUp') { e.preventDefault(); go(-1); }
+    if(e.key==='Home'){ e.preventDefault(); scrollToSlide(0); }
+    if(e.key==='End'){ e.preventDefault(); scrollToSlide(slides.length-1); }
+  });
+
+  const grid = document.getElementById('tocGrid');
+  let lastSec=null;
+  slides.forEach((s,i)=>{
+    const sec=s.dataset.sec||'';
+    if(sec!==lastSec){
+      const h=document.createElement('div'); h.className='toc-sec'; h.textContent=sec; grid.appendChild(h); lastSec=sec;
+    }
+    const b=document.createElement('button'); b.className='toc-item'; b.onclick=()=>jump(i);
+    b.innerHTML='<span class="tnum">'+String(i+1).padStart(2,'0')+'</span><span class="tt">'+(s.dataset.title||('第 '+(i+1)+' 頁'))+'</span>';
+    grid.appendChild(b);
+  });
+  function openTOC(){ document.getElementById('toc').classList.add('open'); }
+  function closeTOC(){ document.getElementById('toc').classList.remove('open'); }
+
+  // 互動問答：點選項後揭曉答案
+  function quizPick(btn, isCorrect){
+    const card = btn.closest('.qcard');
+    // 標記所有選項
+    card.querySelectorAll('.opt').forEach(o=>{
+      o.disabled = true;
+      // 找出正確選項：onclick 內含 ,1)
+      if(o.getAttribute('onclick').includes(',1)')) o.classList.add('correct');
+    });
+    if(!isCorrect) btn.classList.add('wrong');
+    // 揭曉答案
+    const ans = card.querySelector('.ans');
+    if(ans) ans.classList.add('show');
+  }
+</script>
+</body>
+</html>
